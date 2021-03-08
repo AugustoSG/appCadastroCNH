@@ -1,0 +1,209 @@
+<ion-app>
+  <ion-header >
+    <ion-toolbar color="dark">
+      <ion-title>Cadastro da CNH</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="ion-padding">
+
+  <form (ngSubmit)="onSubmit()">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Nome Completo</ion-label>
+            <ion-input type="text" [(ngModel)]="campos.nome" name="nome" id="nome" #nome="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="nome.invalid && (nome.dirty || nome.touched)" color=danger>
+            <div *ngIf="nome?.errors.required">
+              Digite o nome.
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">RG</ion-label>
+            <ion-input type="number" [(ngModel)]="campos.rg" name="rg" id="rg" #rg="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="rg.invalid && (rg.dirty || rg.touched)" color=danger>
+            <div *ngIf="rg?.errors.required">
+              Digite o RG.
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">CPF</ion-label>
+            <ion-input type="number" [(ngModel)]="campos.cpf" name="cpf" id="cpf" #cpf="ngModel" required></ion-input>
+          </ion-item>
+          <ion-item *ngIf="cpf.invalid && (cpf.dirty || cpf.touched)" color=danger>
+            <div *ngIf="cpf?.errors.required">
+              Digite o CPF.
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label position="floating">Data de Nascimento</ion-label>
+            <ion-datetime name="nascimento" [(ngModel)]="campos.nacimento" id="nascimento" #nascimento="ngModel" displayFormat="DD/MM/YYYY" min="1900-01-01" max="2050-12-31" value="" required></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="nascimento.invalid && (nascimento.dirty || nascimento.touched)" color=danger>
+            <div *ngIf="nascimento?.errors.required">
+              Selecione sua data de nascimento.
+            </div>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Nome do Pai</ion-label>
+          <ion-input type="text" [(ngModel)]="campos.pai" name="pai" id="pai" #pai="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="pai.invalid && (pai.dirty || pai.touched)" color=danger>
+          <div *ngIf="pai?.errors.required">
+            Digite o nome do seu pai.
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Nome da Mãe</ion-label>
+          <ion-input type="text" [(ngModel)]="campos.mae" name="mae" id="mae" #mae="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="mae.invalid && (mae.dirty || mae.touched)" color=danger>
+          <div *ngIf="mae?.errors.required">
+            Digite o nome da sua mãe.
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-list>
+      <ion-item>
+        <ion-label>Categoria</ion-label>
+        <ion-select [(ngModel)]="campos.categoria" name="categoria" id="categoria" #categoria="ngModel" required>
+          <ion-select-option value="">Categorias</ion-select-option>
+          <ion-select-option name="acc" id="acc" value="acc">ACC</ion-select-option>
+          <ion-select-option name="a" id="a" value="a">A</ion-select-option>
+          <ion-select-option name="b" id="b" value="b">B</ion-select-option>
+          <ion-select-option name="ab" id="ab" value="ab">AB</ion-select-option>
+          <ion-select-option name="c" id="c" value="c">C</ion-select-option>
+          <ion-select-option name="ac" id="ac" value="ac">AC</ion-select-option>
+          <ion-select-option name="d" id="d" value="d">D</ion-select-option>
+          <ion-select-option name="ad" id="ad" value="ad">AD</ion-select-option>
+          <ion-select-option name="e" id="e" value="e">E</ion-select-option>
+          <ion-select-option name="ae" id="ae" value="ae">AE</ion-select-option>
+        </ion-select>
+        <ion-item *ngIf="categoria.invalid && (categoria.dirty || categoria.touched)" color=danger>
+          <div *ngIf="categoria?.errors.required">
+            Escolha sua categoria.
+          </div>
+        </ion-item>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-col size="12">
+      <ion-item>
+        <ion-label position="floating">Registro</ion-label>
+        <ion-input type="number" [(ngModel)]="campos.registro" name="registro" id="registro" #registro="ngModel" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="registro.invalid && (registro.dirty || registro.touched)" color=danger>
+        <div *ngIf="registro?.errors.required">
+          Digite o seu nº de registro.
+        </div>
+      </ion-item>
+    </ion-col>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Validade</ion-label>
+          <ion-datetime [(ngModel)]="campos.validade" name="validade" id="validade" #validade="ngModel" displayFormat="DD/MM/YYYY" min="1900-01-01" max="2050-12-31" value="" required></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-item *ngIf="validade.invalid && (validade.dirty || validade.touched)" color=danger>
+        <div *ngIf="validade?.errors.required">
+          Selecione a data de validade.
+        </div>
+      </ion-item>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">1º habilitação</ion-label>
+          <ion-datetime [(ngModel)]="campos.primeirah" name="habilitacao" id="habilitacao" #habilitacao="ngModel" displayFormat="DD/MM/YYYY" min="1900-01-01" max="2050-12-31" value="" required></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="habilitacao.invalid && (habilitacao.dirty || habilitacao.touched)" color=danger>
+          <div *ngIf="habilitacao?.errors.required">
+            Selecione a data da 1º habilitação.
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Data de Emissão</ion-label>
+          <ion-datetime [(ngModel)]="campos.emissao" name="emissao" id="emissao" #emissao="ngModel" displayFormat="DD/MM/YYYY" min="1900-01-01" max="2050-12-31" value="" required></ion-datetime>
+        </ion-item>
+        <ion-item *ngIf="emissao.invalid && (emissao.dirty || emissao.touched)" color=danger>
+          <div *ngIf="emissao?.errors.required">
+            Selecione a data de emissao.
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Local</ion-label>
+          <ion-input [(ngModel)]="campos.local" name="local" id="local" type="text" name="nome" id="nome" #local="ngModel" required></ion-input>
+        </ion-item>
+        <ion-item *ngIf="local.invalid && (local.dirty || local.touched)" color=danger>
+          <div *ngIf="local?.errors.required">
+            Digite a sua cidade.
+          </div>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="4">
+        <ion-button color="success" type="submit">Cadastrar</ion-button>
+      </ion-col>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4">
+        <ion-button color="danger">Voltar</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar color="dark">
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</ion-app>
